@@ -12,13 +12,12 @@ pipeline {
             }
         }
     }
-	
-	
-        stage('Docker image build'){
 
-         checkout scm
-         def dockerfile = 'Dockerfile.test'
-         def customImage = docker.build("my-image:${env.BUILD_ID}","-f ${dockerfile} ./dockerfiles") 
-    }
+        stage('Docker Build') {
+    	agent any
+             steps {
+      	sh 'docker build -t java-hello-world-with-maven:latest .'
+      }
+    }	
 	
 }
