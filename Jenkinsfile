@@ -14,16 +14,11 @@ pipeline {
       }
     }
     stage('Docker Build') {
-    	// agent any
+    	 agent any
       steps {
       	sh 'docker build -t java-hello-world-with-maven:latest .'
       }
     }
-    stage('display') {
-       steps {
-             archiveArtifacts artifacts: 'build/' , onlyIfSuccessful: true
-  
-          }
-      }
+    
   }
 }
