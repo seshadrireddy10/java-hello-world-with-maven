@@ -19,5 +19,11 @@ pipeline {
       	sh 'docker build -t java-hello-world-with-maven:latest .'
       }
     }
+   stage('display') {
+       steps {
+             archiveArtifacts artifacts: 'build/' , onlyIfSuccessful: true
+  
+          }
+      }
   }
 }
